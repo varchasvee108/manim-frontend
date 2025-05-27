@@ -3,7 +3,7 @@
 import { initialCreateAndGenerateVideo } from "@/actions";
 import { SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import { video } from "@/lib/db/schema";
-import { Check, CheckCheck, CheckCircle, Loader } from "lucide-react";
+import { CheckCheck, Loader } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";

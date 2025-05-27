@@ -31,7 +31,9 @@ export async function ChatSidebar({ renderId, ...props }: ChatSidebarProps) {
   const selectedRender = await db.query.render.findFirst({
     where: and(eq(render.id, renderId), eq(render.userId, session.user.id)),
     with: {
-      videos: true,
+      videos: {
+        orderBy: [desc(video.createdAt)],
+      },
     },
   });
 
