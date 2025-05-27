@@ -1,7 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
 import { manimCodePrompt } from "./prompts";
 
-export const runManimPipeline = async (prompt: string, videoId: string) => {
+export const runManimPipeline = async (
+  prompt: string,
+  videoId: string,
+  renderId: string
+) => {
   if (!prompt || prompt.trim().length <= 0) {
     throw new Error("Prompt is required");
   }
@@ -11,7 +15,7 @@ export const runManimPipeline = async (prompt: string, videoId: string) => {
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-preview-04-17",
+      model: "gemini-2.5-flash-preview-05-20",
       contents: userPrompt,
       config: {
         systemInstruction: systemPrompt,
@@ -24,18 +28,19 @@ export const runManimPipeline = async (prompt: string, videoId: string) => {
 
     const manimCode = response.text;
 
-    // Fire-and-forget: Trigger FastAPI backend to render
-    // fetch(process.env.FASTAPI_RENDER_URL!, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     code: manimCode,
-    //   }),
-    // }).catch((err) => {
-    //   console.error("Failed to trigger FastAPI render:", err);
-    // });
+    fetch(process.env.FASTAPI_RENDER_URL!, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code: manimCode,
+        video_id: videoId,
+        render_id: renderId,
+      }),
+    }).catch((err) => {
+      console.error("Failed to trigger FastAPI render:", err);
+    });
 
     return { manimCode };
   } catch (error) {

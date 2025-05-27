@@ -66,7 +66,7 @@ export const initialCreateAndGenerateVideo = async (
         videoStatus: "pending",
       })
       .where(eq(video.id, videoId));
-    const { manimCode } = await runManimPipeline(prompt, videoId);
+    const { manimCode } = await runManimPipeline(prompt, videoId, renderId);
     await db
       .update(video)
       .set({
