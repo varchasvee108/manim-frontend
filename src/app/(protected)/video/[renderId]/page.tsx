@@ -35,8 +35,15 @@ const RenderPage = async ({
   console.log(returnedVideo.videoUrl);
 
   return (
-    <div className="w-full h-full">
-      <VideoView videoUrl={returnedVideo.videoUrl} />
+    <div className="w-full h-full flex flex-col px-5 ">
+      <div className="pt-4">
+        <h1 className=" text-muted-foreground text-sm">
+          {returnedVideo.prompt}
+        </h1>
+      </div>
+      <div className="flex-1">
+        <VideoView videoUrl={returnedVideo.videoUrl} />
+      </div>
     </div>
   );
 };
