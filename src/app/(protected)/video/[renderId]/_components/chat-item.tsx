@@ -59,6 +59,22 @@ const ChatItem = ({ video, index }: ChatItemProps) => {
     setIsGenerating,
   ]);
 
+  // Add new useEffect for polling
+  useEffect(() => {
+    if (
+      !isActive ||
+      (video.scriptStatus !== "pending" && video.videoStatus !== "pending")
+    ) {
+      return;
+    }
+
+    const pollInterval = setInterval(() => {
+      router.refresh();
+    }, 4000); // Poll every 5 seconds
+
+    return () => clearInterval(pollInterval);
+  }, [isActive, video.scriptStatus, video.videoStatus, router]);
+
   return (
     <div>
       <SidebarMenuItem
@@ -93,25 +109,33 @@ const ChatItem = ({ video, index }: ChatItemProps) => {
         </SidebarMenuButton>
         <div className="px-2 flex flex-col gap-y-2 py-2">
           {video.scriptStatus === "pending" ? (
-            <div className="flex gap-x-2 items-center">
-              <span>Generating script...</span>
+            <div className="flex pl-5 gap-x-2 items-center">
+              <span className="text-muted-foreground text-sm">
+                Generating script...
+              </span>
               <Loader className="animate-spin size-4 text-sky-600" />
             </div>
           ) : video.scriptStatus === "generated" ? (
-            <div className="flex gap-x-2 items-center">
-              <span>Script generated</span>
+            <div className="flex pl-5 gap-x-2 items-center">
+              <span className="text-muted-foreground text-sm">
+                Script generated
+              </span>
               <CheckCheck className="size-4 text-green-600" />
             </div>
           ) : null}
           {video.videoStatus === "pending" ? (
-            <div className="flex gap-x-2 items-center">
-              <span>Generating video...</span>
+            <div className=" pl-5 flex gap-x-2 items-center">
+              <span className="text-muted-foreground text-sm">
+                Generating video...
+              </span>
               <Loader className="animate-spin size-4 text-sky-600" />
             </div>
           ) : video.videoStatus === "generated" ? (
-            <div className="flex gap-x-2 items-center">
-              <span>Video generated</span>
-              <CheckCheck className="size-4" />
+            <div className="flex gap-x-2 items-center pl-5">
+              <span className="text-muted-foreground text-sm">
+                Video generated
+              </span>
+              <CheckCheck className="size-4 text-green-600" />
             </div>
           ) : null}
         </div>

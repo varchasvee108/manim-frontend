@@ -1,8 +1,9 @@
 import { db } from "@/lib/db";
 import { render, video } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import React from "react";
+import VideoView from "./_components/video-view";
 
 const RenderPage = async ({
   params,
@@ -23,15 +24,21 @@ const RenderPage = async ({
       where: eq(render.id, renderId),
     }),
     db.query.video.findFirst({
-      where: eq(video.id, videoId),
+      where: and(eq(video.id, videoId), eq(video.renderId, renderId)),
     }),
   ]);
 
-  if (!returnedRender || !returnedVideo) {
+  if (!returnedRender || !returnedVideo || !returnedVideo.videoUrl) {
     return redirect("/");
   }
 
-  return <div>This is the video</div>;
+  console.log(returnedVideo.videoUrl);
+
+  return (
+    <div className="w-full h-full">
+      <VideoView videoUrl={returnedVideo.videoUrl} />
+    </div>
+  );
 };
 
 export default RenderPage;

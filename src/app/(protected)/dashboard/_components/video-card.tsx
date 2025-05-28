@@ -7,35 +7,46 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { formatDistanceToNow } from "date-fns";
 
 interface VideoCardProps {
   prompt: string;
-  videoUrl: string | null;
+  videoId: string;
   renderId: string;
+  videoUrl: string;
+  createdAt: Date;
 }
 
-const VideoCard = ({ prompt, videoUrl, renderId }: VideoCardProps) => {
-  const handleCopy = (url: string) => {
-    navigator.clipboard.writeText(url);
-    toast.success("URL copied to clipboard");
-  };
+const VideoCard = ({
+  prompt,
+  videoId,
+  renderId,
+  videoUrl,
+  createdAt,
+}: VideoCardProps) => {
   const router = useRouter();
 
   return (
     <Card
       className="cursor-pointer"
       onClick={() => {
-        router.push(`/video/${renderId}?videoUrl=${videoUrl}`);
+        router.push(`/video/${renderId}?videoId=${videoId}`);
       }}
     >
       <CardHeader>
-        <CardTitle>{prompt}</CardTitle>
+        <CardTitle className="line-clamp-2">{prompt}</CardTitle>
       </CardHeader>
-      <CardContent></CardContent>
+      <CardContent>
+        <video src={videoUrl} className="w-full rounded-lg" controls />
+      </CardContent>
+      <CardFooter className="text-sm text-muted-foreground">
+        Created {formatDistanceToNow(createdAt, { addSuffix: true })}
+      </CardFooter>
     </Card>
   );
 };

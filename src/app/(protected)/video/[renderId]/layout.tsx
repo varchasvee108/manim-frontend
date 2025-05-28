@@ -17,12 +17,12 @@ const ManimLayout = async ({
     <SidebarProvider>
       <div className="h-full w-full">
         <div className="flex h-full">
-          <ChatSidebar renderId={renderId}  />
+          <ChatSidebar renderId={renderId} />
           <div className="flex-1 flex-col">
             <div className="w-full">
               <MainNavbar />
             </div>
-            <main className="">{children}</main>
+            <main className="w-full h-full">{children}</main>
           </div>
         </div>
       </div>

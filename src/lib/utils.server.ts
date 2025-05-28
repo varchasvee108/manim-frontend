@@ -28,7 +28,12 @@ export const runManimPipeline = async (
 
     const manimCode = response.text;
 
-    fetch(process.env.FASTAPI_RENDER_URL!, {
+    const fastApiUrl = process.env.FASTAPI_RENDER_URL;
+    if (!fastApiUrl) {
+      throw new Error("FASTAPI_RENDER_URL environment variable is not set");
+    }
+
+    fetch(`${fastApiUrl}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,6 +42,7 @@ export const runManimPipeline = async (
         code: manimCode,
         video_id: videoId,
         render_id: renderId,
+        quality: "k",
       }),
     }).catch((err) => {
       console.error("Failed to trigger FastAPI render:", err);

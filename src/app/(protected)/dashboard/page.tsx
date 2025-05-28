@@ -25,17 +25,19 @@ const Dashboard = async () => {
 
   return (
     <div className="max-w-7xl mx-auto py-16 px-8 md:px-0">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {userRenders.map((r) => {
           const videoUrl = r.videos[0]?.videoUrl;
-          // if (!videoUrl) return null;
+          if (!videoUrl) return null;
 
           return (
             <VideoCard
               key={r.id}
               prompt={r.videos[0].prompt}
-              videoUrl={videoUrl || null}
+              videoId={r.videos[0].id}
               renderId={r.id}
+              videoUrl={videoUrl}
+              createdAt={r.videos[0].createdAt}
             />
           );
         })}

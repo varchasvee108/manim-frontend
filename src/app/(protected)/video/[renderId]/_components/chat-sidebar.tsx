@@ -16,7 +16,7 @@ import { isAuthenticated } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { render, video } from "@/lib/db/schema";
 import { db } from "@/lib/db";
-import { and, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq } from "drizzle-orm";
 
 type ChatSidebarProps = {
   renderId: string;
@@ -32,7 +32,7 @@ export async function ChatSidebar({ renderId, ...props }: ChatSidebarProps) {
     where: and(eq(render.id, renderId), eq(render.userId, session.user.id)),
     with: {
       videos: {
-        orderBy: [desc(video.createdAt)],
+        orderBy: [asc(video.createdAt)],
       },
     },
   });
@@ -61,7 +61,6 @@ export async function ChatSidebar({ renderId, ...props }: ChatSidebarProps) {
       </SidebarHeader>
       <SidebarContent className=" ">
         <div className="overflow-y-auto">
-          {/* <div className="h-[100vh]">hello</div> */}
           <ChatItems videos={selectedRender?.videos} />
         </div>
       </SidebarContent>

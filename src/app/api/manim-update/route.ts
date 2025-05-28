@@ -12,6 +12,7 @@ interface ManimUpdateRequest {
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as ManimUpdateRequest;
+    console.log(body);
 
     if (!body.video_url || !body.render_id || !body.video_id) {
       return NextResponse.json(
@@ -33,6 +34,8 @@ export async function POST(req: Request) {
     if (!updatedVideo) {
       return NextResponse.json({ error: "Video not found" }, { status: 404 });
     }
+
+    console.log("Updated successfully");
 
     return NextResponse.json({
       success: true,
