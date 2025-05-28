@@ -60,20 +60,20 @@ const ChatItem = ({ video, index }: ChatItemProps) => {
   ]);
 
   // Add new useEffect for polling
-  useEffect(() => {
-    if (
-      !isActive ||
-      (video.scriptStatus !== "pending" && video.videoStatus !== "pending")
-    ) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (
+  //     !isActive ||
+  //     (video.scriptStatus !== "pending" && video.videoStatus !== "pending")
+  //   ) {
+  //     return;
+  //   }
 
-    const pollInterval = setInterval(() => {
-      router.refresh();
-    }, 4000); // Poll every 5 seconds
+  //   const pollInterval = setInterval(() => {
+  //     router.refresh();
+  //   }, 4000); // Poll every 5 seconds
 
-    return () => clearInterval(pollInterval);
-  }, [isActive, video.scriptStatus, video.videoStatus, router]);
+  //   return () => clearInterval(pollInterval);
+  // }, [isActive, video.scriptStatus, video.videoStatus, router]);
 
   return (
     <div>
