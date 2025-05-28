@@ -59,10 +59,11 @@ export function PromptForm() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-4">
       <div className="w-full max-w-2xl">
         <h1 className="text-4xl font-bold text-center mb-2">
-          One click Animations{" "}
+          One click Animations
         </h1>
         <p className="text-muted-foreground text-center mb-8">
-          Describe your animation idea, and we'll generate the video for you.
+          Describe your animation idea, and we&apos;ll generate the video for
+          you.
         </p>
 
         <form onSubmit={handleSubmit} className="relative">
