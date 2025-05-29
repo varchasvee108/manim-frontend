@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
 const DashboardNavbar = () => {
@@ -10,7 +11,7 @@ const DashboardNavbar = () => {
           variant={"link"}
           className="text-muted-foreground text-sm cursor-pointer hover:text-zinc-900 transition"
         >
-          &larr; Home{" "}
+          <Link href={"/"}>&larr; Home </Link>
         </Button>
       </div>
     </div>
