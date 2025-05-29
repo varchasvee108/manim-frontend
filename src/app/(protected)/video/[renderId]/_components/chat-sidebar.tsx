@@ -1,4 +1,4 @@
-import { GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd, Satellite } from "lucide-react";
 
 import {
   Sidebar,
@@ -49,10 +49,10 @@ export async function ChatSidebar({ renderId, ...props }: ChatSidebarProps) {
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <GalleryVerticalEnd className="size-4" />
+                  <Satellite className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Documentation</span>
+                  <span className="font-semibold">Mathmotion</span>
                 </div>
               </a>
             </SidebarMenuButton>
