@@ -29,12 +29,12 @@ const Dashboard = async () => {
   if (userRenders.length === 0) {
     return (
       <div className="max-w-7xl mx-auto h-full flex flex-col items-center justify-center gap-4">
-        <p className="text-muted-foreground">No videos created yet</p>
-        <Link className="cursor-pointer" href="/video">
-          <Button variant={"outline"}>
+        <p className="text-muted-foreground text-sm">No videos created yet</p>
+        <Button variant={"outline"} className="cursor-pointer">
+          <Link className="" href="/video">
             Create Video <Plus className="size-4" />
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     );
   }
