@@ -11,11 +11,11 @@ import { video } from "@/lib/db/schema";
 import { useRouter } from "next/navigation";
 
 const EXAMPLE_PROMPTS = [
-  "Create a scene with a blue circle and a red square.",
-  "Animate a sine wave.",
-  "Show the formula for Pythagorean theorem.",
-  "Draw a number line from -5 to 5.",
-  "Transform a square into a triangle.",
+  "Display a blue circle and a red square appearing one after the other.",
+  "Animate the drawing of a sine wave curve.",
+  "Show the Pythagorean theorem formula with a simple animation.",
+  "Draw a number line from -5 to 5 with labeled tick marks.",
+  "Transform a square smoothly into a triangle.",
 ];
 
 type res = {
