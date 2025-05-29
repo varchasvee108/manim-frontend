@@ -52,7 +52,7 @@ export async function ChatSidebar({ renderId, ...props }: ChatSidebarProps) {
                   <Satellite className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Mathmotion</span>
+                  <span className="font-semibold text-xl">Mathmotion</span>
                 </div>
               </a>
             </SidebarMenuButton>
