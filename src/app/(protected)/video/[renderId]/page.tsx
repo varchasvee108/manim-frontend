@@ -28,11 +28,9 @@ const RenderPage = async ({
     }),
   ]);
 
-  if (!returnedRender || !returnedVideo || !returnedVideo.videoUrl) {
+  if (!returnedRender || !returnedVideo) {
     return redirect("/");
   }
-
-  console.log(returnedVideo.videoUrl);
 
   return (
     <div className="w-full h-full flex flex-col px-5 ">
@@ -42,7 +40,7 @@ const RenderPage = async ({
         </h1>
       </div>
       <div className="flex-1">
-        <VideoView videoUrl={returnedVideo.videoUrl} />
+        <VideoView videoUrl={returnedVideo.videoUrl || ""} />
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const VideoView = ({ videoUrl }: VideoViewProps) => {
     }
   }, [videoUrl]);
 
-  if (isLoading) {
+  if (isLoading || !videoUrl) {
     return <VideoSkeleton />;
   }
 
