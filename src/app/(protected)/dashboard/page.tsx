@@ -31,7 +31,7 @@ const Dashboard = async () => {
       <div className="max-w-7xl mx-auto h-full flex flex-col items-center justify-center gap-4">
         <p className="text-muted-foreground text-sm">No videos created yet</p>
         <Button variant={"outline"} className="cursor-pointer">
-          <Link className="flex gap-2" href="/">
+          <Link className="flex gap-1 items-center" href="/">
             Create Video{" "}
             <span>
               <Plus className="size-4" />
