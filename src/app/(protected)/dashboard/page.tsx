@@ -5,6 +5,9 @@ import { desc, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import React from "react";
 import VideoCard from "./_components/video-card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Plus } from "lucide-react";
 
 const Dashboard = async () => {
   const session = await isAuthenticated();
@@ -22,6 +25,19 @@ const Dashboard = async () => {
       },
     },
   });
+
+  if (userRenders.length === 0) {
+    return (
+      <div className="max-w-7xl mx-auto h-full flex flex-col items-center justify-center gap-4">
+        <p className="text-muted-foreground">No videos created yet</p>
+        <Link className="cursor-pointer" href="/video">
+          <Button variant={"outline"}>
+            Create Video <Plus className="size-4" />
+          </Button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto py-16 px-8 md:px-0 h-full">
