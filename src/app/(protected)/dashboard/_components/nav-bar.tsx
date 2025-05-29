@@ -8,7 +8,7 @@ const DashboardNavbar = () => {
         <div />
         <Button
           variant={"link"}
-          className="text-muted-foreground hover:text-zinc-900 transition"
+          className="text-muted-foreground text-sm cursor-pointer hover:text-zinc-900 transition"
         >
           &larr; Home{" "}
         </Button>
