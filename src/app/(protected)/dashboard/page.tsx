@@ -24,7 +24,7 @@ const Dashboard = async () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-8 md:px-0">
+    <div className="max-w-7xl mx-auto py-16 px-8 md:px-0 h-full">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {userRenders.map((r) => {
           const videoUrl = r.videos[0]?.videoUrl;

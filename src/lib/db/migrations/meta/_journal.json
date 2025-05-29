@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1746424505393,
-      "tag": "0000_needy_micromax",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1746427577308,
-      "tag": "0001_worried_lake",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1746696829594,
-      "tag": "0002_moaning_virginia_dare",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1746964398906,
-      "tag": "0003_tidy_senator_kelly",
+      "when": 1748443664486,
+      "tag": "0000_next_phantom_reporter",
       "breakpoints": true
     }
   ]
